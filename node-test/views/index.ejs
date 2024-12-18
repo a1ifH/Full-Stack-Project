@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ZUJA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+  </head>
+  <body>
+    <p class="text-center text-black pt-5" style="font-size: 150px; font-family: 'Faster One', cursive;">ZUJA MOTORS</p>
+
+    <p>Welcome to ZUJA MOTORS</p>
+    <table id="product-table">
+      <tr>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Price</td>
+        <td>Image</td>
+        <td></td>
+      </tr>
+    </table>
+
+    <form id="checkout-form" method="POST", action=".">
+      <label for="shipping_addr">Shipping Address</label>
+      <input type="text" name="shippping_addr" placeholder="Shipping address" id="shippping_addr"> <!--  {'shipping_addr': <>} -->
+      <button id="checkout-button" type="submit">Checkout</button>
+    </form>
+
+    <div id="shopping-basket-cont">
+      <table id="shopping-basket">
+        <tr>
+          <td>Name</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Total</td>
+        </tr>
+      </table>
+    </div>
+
+    <form id="login-form" method="POST", action=".">
+      <label for="username">Username</label>
+      <input id="form-username" name="username" type="text" placeholder="Your Username">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="form-password" placeholder="Your Password">
+      <input type="submit" value="Login">
+    </form>
+
+    <div id="shopping-basket-cont">
+      <button id="show-basket">Show basket</button>
+      <table id="shopping-basket">
+        <tr>
+          <td>Name</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Total</td>
+        </tr>
+      </table>
+      <form id="checkout-form" method="POST", action=".">
+        <label for="shipping_addr">Shipping Address</label>
+        <input type="text" name="shippping_addr" placeholder="Shipping address" id="shippping_addr">
+        <button id="checkout-button" type="submit">Checkout</button>
+      </form>
+    </div>
+
+    <div class="w3-col l8 s12">
+      <div class="w3-card-4 w3-margin w3-white">
+        <div class="w3-container">
+        </div>
+        <div class="w3-container">
+          <p></p>
+          <div class="w3-row">
+            <div class="w3-col m8 s12">
+              <p><button class="w3-button w3-padding-large w3-white w3-border"><b>BUY »</b></button></p>
+            </div>
+            <div class="w3-col m4 w3-hide-small">
+            </div>
+          </div>
+        </div>
+      </div>
+    <script>
+      fetch("http://localhost:8000/api/products/?format=json")
+      .then(response => response.json())
+      .then(data =>{ 
+
+        console.log(data)
+        data.forEach(element =>{
+
+          let table = document.getElementById("product-table")
+          let newRow = document.createElement("tr")
+          table.appendChild(newRow)
+
+          let name = document.createElement("td")
+          name.innerHTML = (element['name'])
+          newRow.appendChild(name)
+
+          let desc = document.createElement("td")
+          desc.innerHTML = (element['description'])
+          newRow.appendChild(desc)
+
+          let price = document.createElement("td")
+          desc.innerHTML = (element['price'])
+          newRow.appendChild(price)
+
+          let picturetd = document.createElement("td")
+          let picture = document.createElement("img")
+          picture.src = element['picture']
+          newRow.appendChild(picturetd);
+          picturetd.appendChild(picture)
+
+          let buttoncontainer = document.createElement("td")
+          let button = document.createElement("button")
+          button.innerHTML = "Add to basket"
+          button.addEventListener('click', function(){
+            addToBasket(element['id']);
+          });
+          buttoncontainer.appendChild(button)
+          newRow.appendChild(buttoncontainer);
+
+          }) 
+      });
+
+      let loginform = document.getElementById("login-form")
+          loginform.addEventListener("submit", (event)=>{
+            
+            event.preventDefault();
+            let user = document.getElementById("form-username").value
+            let pass = document.getElementById("form-password").value
+            
+            fetch("http://localhost:8000/token/", {
+              
+              method: 'POST',
+              headers: {
+                
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ${auth_token}'
+              },
+              
+              body:JSON.stringify( {username:user, password:pass})
+            }).then(response => response.json()).then(function(data){
+            console.log(data);
+            window.token = data['token']
+            })
+          } , true)
+
+      function addToBasket(productId){
+        if(window.token){
+          fetch("http://localhost:8000/addbasket/"+productId+"?format=json", {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Token '+window.token
+            }
+          }).then(response => response.json()).then(data =>console.log(data));
+        }
+        else{
+          alert("Please log in to continue")
+        }
+      }
+
+      function showBasket(){
+          if(window.token){
+              fetch("http://localhost:8000/basket?format=json",{
+                method:'GET',
+                headers:{
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Token '+window.token
+                }
+              }).then(response => response.json()).then(data=>{
+                data['items'].forEach(element =>{
+                  let table = document.getElementById("shopping-basket")
+                  let newRow = document.createElement("tr")
+                  table.appendChild(newRow)
+                  let name = document.createElement("td")
+                  name.innerHTML = element['product']
+                  newRow.appendChild(name)
+                  let price = document.createElement("td")
+                  price.innerHTML = element['price']
+                  newRow.appendChild(price)
+                  let quantity = document.createElement("td")
+                  quantity.innerHTML = element['quantity']
+                  newRow.appendChild(quantity)
+                  let total = document.createElement("td")
+                  total.innerHTML = element['quantity']*element['price']
+                  newRow.appendChild(total)
+
+                })
+              });
+            }
+            else{
+              alert("Please log in to continue");
+            }
+        }
+
+        let showbb = document.getElementById("show-basket")
+        showbb.addEventListener("click", (event)=>{
+                event.preventDefault();
+                showBasket();
+              })
+
+        let checkoutbutton = document.getElementById("checkout-button");
+        checkoutbutton.addEventListener("click", (event)=>{
+          event.preventDefault();
+          // get the value for the shipping addr
+          let sp_addr = document.getElementById("shippping_addr").value;
+          fetch("http://localhost:8000/checkout/?format=json", {
+                  method:'POST',
+                  headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token '+window.token
+                  },
+                  body:JSON.stringify( {shipping_addr:sp_addr})  
+                }).then(function(response){
+                  console.log(response)
+                  return response.json()
+                }).then(function(data){
+                  console.log(data)
+                })
+        }, true);
+
+
+      </script>
+  </body>
+</html>
+
+
