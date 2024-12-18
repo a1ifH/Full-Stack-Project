@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<nav>
+    <!-- Start Top Bar -->
+    <div class="top-bar" style="top: 0;">
+      <div class="row">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+              <li><a href="/" style="color: dodgerblue">Home</a></li>
+              <li><a href="/allproducts" style="color: dodgerblue">Products</a></li>
+              <li><a href="/about" style="color: dodgerblue">About</a></li>
+              <li><a href="/usersignup" style="color: dodgerblue">Signup</a></li>
+              <li><a href="/contact" style="color: dodgerblue">Contact</a></li>
+          </ul>
+
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><input type="text" placeholder="Product Name"></li>
+            <li><button type="button" class="button" >Search</button></li>
+
+       {% if user.is_authenticated %}
+           <li><a href="#" style="color: dodgerblue">User: {{ user.username }}</a></li>
+           <li><a href="/basket" style="color: dodgerblue">Basket</a></li>
+           <li><a href="/logout" class="button">Logout</a></li>
+       {% else %}
+           <li><a href="/login" class="button">Login</a></li>
+       {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</nav>
+
+<body id="backgroundnew" style="background-image: url('{% static "/img/corvet.png"%}');">
+
+<!--<img class="back-img2" src="{% static 'img/Logo2.png' %}" style="position: absolute; display: block; z-index: 1; margin-left: 10; margin-right: auto; width: 25%;top: auto"/>
+-->
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User Signup
+{% endblock %}
+
+{% block content %}
+
+
+        <div id="login">
+    <br><br><br>
+        <h3 class="text-center text-white pt-5" style="font-size: 150px; font-family: 'Faster One', cursive;">Signup form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="." method="POST">
+                            {% csrf_token %}
+                            {{ form.as_table }}
+                            <button type="submit">SUBMIT</button>
+                            <div class="form-group">
+                                </label><br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="SUBMIT">
+                            </div>
+                            <div id="register-link" class="text-right">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

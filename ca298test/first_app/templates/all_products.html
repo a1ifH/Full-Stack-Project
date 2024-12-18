@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    All Products
+{% endblock %}
+
+{% block content %}
+
+
+    <a name="#top"></a>
+    <p class="text-center text-white pt-5" style="font-size: 150px; font-family: 'Faster One', cursive;">Products in Stock</p>
+    {%  for p in products %}
+
+        <div class="row small-up-1 medium-up-2 large-up-3" style="margin: 0 auto;">
+    <div class="callout" style="justify-content: center">
+      <p>PRODUCT ID: {{ p.id }}</p>
+      <p><img src="{{ p.picture.url }}" alt="Product Images" width="1000"></p>
+        <p class="lead">{{ p.name }} {{ p.description }}</p>
+        <p class="subheader">{{ p.category.name }}</p>
+        <p class="subheader">€{{ p.price }}</p>
+        <a class="button small large-expanded" href="/product/{{ p.id }}">View</a>
+
+  </div>
+</div>
+
+{% endfor %}
+
+
+
+
+
+    <a class="button expanded" href="#top">Back To Top</a>
+
+<footer>
+  <div class="row expanded callout secondary">
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Offices</p>
+      <ul class="menu vertical">
+        <li><a href="https://www.google.ie/maps/place/Dublin/@53.3244021,-6.3157431,12z/data=!3m1!4b1!4m5!3m4!1s0x48670e80ea27ac2f:0xa00c7a9973171a0!8m2!3d53.3498053!4d-6.2603097?hl=en">Dublin</a></li>
+        <li><a href="google.ie/maps/place/London,+UK/@51.5287718,-0.2416791,11z/data=!3m1!4b1!4m5!3m4!1s0x47d8a00baf21de75:0x52963a5addd52a99!8m2!3d51.5073509!4d-0.1277583?hl=en">London</a></li>
+        <li><a href="https://www.google.ie/maps/place/Paris,+France/@48.8589101,2.3120407,13z/data=!3m1!4b1!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219?hl=en">Paris</a></li>
+        <li><a href="https://www.google.ie/maps/place/Berlin,+Germany/@52.5069704,13.2846514,11z/data=!3m1!4b1!4m5!3m4!1s0x47a84e373f035901:0x42120465b5e3b70!8m2!3d52.5200066!4d13.404954?hl=en">Berlin</a></li>
+      </ul>
+    </div>
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Company</p>
+      <ul class="menu vertical">
+        <li><a href="/about">Ethos</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/about">Careers</a></li>
+        <li><a href="/about">Community</a></li>
+      </ul>
+    </div>
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Contact</p>
+      <ul class="menu vertical">
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fi-social-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fi-social-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fi-social-instagram"></i> Instagram</a></li>
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fi-social-pinterest"></i> Youtube</a></li>
+      </ul>
+    </div>
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Other</p>
+      <ul class="menu vertical">
+        <li><a href="#">Guidlines</a></li>
+        <li><a href="#">Dont</a></li>
+        <li><a href="#">Know</a></li>
+        <li><a href="#">Hehe</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="medium-6 columns">
+      <ul class="menu">
+        <li><a href="#"></a></li>
+
+      </ul>
+    </div>
+
+
+</footer>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+
+{% endblock %}
+</html>
+
+

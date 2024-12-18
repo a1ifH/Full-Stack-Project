@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+    <br><br><br>
+
+    {% if added %}
+    <div class="alert alert-success" style="text-align: center;">
+        <strong>Success!</strong> Product added to your basket. <a href="/allproducts" class="alert-link">Continue shopping</a>.
+    </div>
+    {% endif %}
+
+    <div class="row small-up-1 medium-up-2 large-up-3" style="margin: 0 auto;">
+    <div class="callout" style="justify-content: center">
+      <p>PRODUCT ID: {{ product.id }}</p>
+      <p><img src="{{ product.picture.url }}" alt="Product Images" width="1000"></p>
+        <p class="lead">{{ product.name }} {{ product.description }}</p>
+        <p class="subheader">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim elit vitae est tincidunt imperdiet. Cras metus est,
+            feugiat ac tellus eu, sodales vehicula quam. Phasellus id urna euismod, ullamcorper dui sit amet, ultricies arcu. Mauris facilisis fermentum nibh
+            molestie dignissim. Fusce mollis in ex eu mattis. Donec non fringilla nisi. Nam tempus lacus et facilisis vestibulum. Mauris erat massa, venenatis
+            in venenatis vitae, efficitur at augue.</p><br>
+        <p class="subheader">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim elit vitae est tincidunt imperdiet. Cras metus est,
+            feugiat ac tellus eu, sodales vehicula quam. Phasellus id urna euismod, ullamcorper dui sit amet, ultricies arcu. Mauris facilisis fermentum nibh
+            molestie dignissim. Fusce mollis in ex eu mattis. Donec non fringilla nisi. Nam tempus lacus et facilisis vestibulum. Mauris erat massa, venenatis
+            in venenatis vitae, efficitur at augue.</p><br>
+
+        <p class="subheader">{{ product.category.name }}</p>
+        <p class="subheader">€{{ product.price }}</p>
+        <a class="button small large-expanded" href="/addbasket/{{ product.id }}">BUY</a><br/>
+
+  </div>
+</div>
+        </div>
+{% endblock %}

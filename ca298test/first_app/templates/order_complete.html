@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Shopping Basket
+{% endblock %}
+
+{% block content %}
+                <div>Order Complete</div>
+                    <div>
+                        <button>
+                            X
+                        </button>
+                    </div>
+
+                    <table class="window-table">
+                        <thead>
+                            <tr>
+                                <td>Item</td>
+                                <td>Price</td>
+                                <td>Quantity</td>
+                                <td>Total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in items %}
+                                <tr>
+                                    <td>{{ i.product.name }}</td>
+                                    <td>{{ i.product.price }}</td>
+                                    <td>{{ i.quantity }}</td>
+                                    <td>{{ i.price  }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+{% endblock %}

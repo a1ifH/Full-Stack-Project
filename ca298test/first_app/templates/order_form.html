@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Order form
+{% endblock %}
+
+
+{% block content %}
+                    <br><br><br>
+    <p class="text-center text-white pt-5" style="font-size: 150px; font-family: 'Faster One', cursive;">Shopping Basket</p>
+    <div class="row small-up-1 medium-up-2 large-up-3" style="margin: 0 auto;">
+    <div class="callout" style="justify-content: center">
+                    <div>
+                        <button>
+
+                        </button>
+                    </div>
+             <table class="window-table">
+                        <thead>
+                            <tr>
+                                <td>Item</td>
+                                <td>Price</td>
+                                <td>Quantity</td>
+                                <td>Total</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in items %}
+                                <tr>
+                                    <td>{{ i.p.name }}</td>
+                                    <td>{{ i.p.price }}</td>
+                                    <td>{{ i.quantity }}</td>
+                                    <td>{{ i.price  }}</td>
+                                    <td><a href="{% url 'remove_basket' sbi=i.id %}">Remove</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            <p>Total price {{ basket.price }}</p>
+            <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_table }}
+                <button class="button small large-expanded" type="submit">SUBMIT</button>
+            </form>
+                </div>
+
+{% endblock %}
